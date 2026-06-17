@@ -1,0 +1,19 @@
+{
+  "name": "subtext-verify",
+  "version": "0.1.0",
+  "description": "Drive a hosted browser, capture before/after proof, and leave reviewer-facing evidence against your running app",
+  "mcpServers": {
+    "subtext": {
+      "type": "http",
+      "url": "https://api.fullstory.com/mcp/subtext"
+    },
+    "subtext-eu1": {
+      "type": "http",
+      "url": "https://api.eu1.fullstory.com/mcp/subtext"
+    },
+    "subtext-tunnel": {
+      "command": "npx",
+      "args": ["-y", "@subtextdev/subtext-cli@latest", "tunnel", "mcp"]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "subtext-verify",
+  "description": "Drive a hosted browser, capture before/after proof, and leave reviewer-facing evidence against your running app",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Subtext",
+    "email": "subtext@fullstory.com"
+  },
+  "hooks": "./hooks/hooks-cursor.json"
+}
