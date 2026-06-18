@@ -1,0 +1,28 @@
+{
+  "name": "@subtextdev/subtext-cli",
+  "version": "1.2.0",
+  "description": "Subtext Verify tunnel client — reverse tunnel for the Subtext hosted browser, as a CLI and an MCP stdio server",
+  "license": "MIT",
+  "homepage": "https://subtext.fullstory.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fullstorydev/subtext-verify.git",
+    "directory": "cli/npm"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "subtext": "bin/subtext.js"
+  },
+  "scripts": {
+    "postinstall": "node install.js",
+    "prepack": "cp ../README.md README.md",
+    "postpack": "rm -f README.md"
+  },
+  "files": [
+    "bin/",
+    "install.js",
+    "README.md"
+  ]
+}

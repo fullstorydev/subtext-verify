@@ -1,0 +1,75 @@
+name: Release CLI
+
+on:
+  push:
+    tags:
+      - "cli/v*"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cli
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: cli/go.mod
+          cache-dependency-path: cli/go.sum
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Validate npm version matches tag
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#cli/v}"
+          PKG_VERSION=$(node -p "require('./npm/package.json').version")
+          if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
+            echo "Tag version ($TAG_VERSION) does not match package.json version ($PKG_VERSION)"
+            exit 1
+          fi
+
+      - name: Run tests
+        run: go test ./...
+
+      # GoReleaser OSS does not support the cli/vX.Y.Z tag prefix used by Go
+      # monorepos (that's a Pro feature). Workaround: strip the prefix into
+      # GORELEASER_CURRENT_TAG so GoReleaser gets a valid semver, skip its
+      # validate step (which would reject the tag since cli/v0.1.0 != v0.1.0
+      # in git), skip its publish step, and create the GitHub Release manually
+      # so the release tag stays as cli/v0.1.0. See
+      # https://goreleaser.com/customization/monorepo/
+      - name: Extract semver tag
+        run: echo "GORELEASER_CURRENT_TAG=${GITHUB_REF_NAME#cli/}" >> $GITHUB_ENV
+
+      - uses: goreleaser/goreleaser-action@v6
+        with:
+          version: "~> v2"
+          args: release --clean --skip=publish,validate
+          workdir: cli
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GORELEASER_CURRENT_TAG: ${{ env.GORELEASER_CURRENT_TAG }}
+
+      - name: Create GitHub Release
+        run: |
+          VERSION="${GITHUB_REF_NAME#cli/v}"
+          gh release create "$GITHUB_REF_NAME" \
+            --title "CLI v${VERSION}" \
+            dist/*.tar.gz dist/*.zip dist/checksums.txt
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish npm package
+        working-directory: cli/npm
+        run: npm publish --access public --provenance
