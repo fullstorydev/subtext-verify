@@ -42,8 +42,8 @@ If MCP tools are not available, install the plugin. The command depends on the p
 **Claude Code:**
 
 ```
-/plugin marketplace add fullstorydev/subtext-verify
-/plugin install subtext-verify@subtext-verify-marketplace
+/plugin marketplace add fullstorydev/subtext-review
+/plugin install subtext-verify@subtext-marketplace
 ```
 
 **Gemini CLI:**

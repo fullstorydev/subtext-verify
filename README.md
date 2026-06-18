@@ -24,8 +24,8 @@ This plugin bundles:
 
 **Claude Code**
 ```
-/plugin marketplace add fullstorydev/subtext-verify
-/plugin install subtext-verify@subtext-verify-marketplace
+/plugin marketplace add fullstorydev/subtext-review
+/plugin install subtext-verify@subtext-marketplace
 ```
 
 **Cursor** — install from the Marketplace panel (or a Team Marketplace that
