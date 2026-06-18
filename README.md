@@ -15,8 +15,8 @@ This plugin bundles:
     `https://api.eu1.fullstory.com/mcp/subtext`). Serves the `live-*`,
     `comment-*`, `doc-*`, `artifact-*`, and `clip-*` tools.
   - `subtext-tunnel` (stdio) — the local reverse-tunnel client, run via
-    `npx -y @subtextdev/subtext-cli@latest tunnel mcp`. Source lives in
-    [`cli/`](cli/).
+    `npx -y @subtextdev/subtext-cli@latest tunnel mcp`, published from the
+    [`fullstorydev/subtext-cli`](https://github.com/fullstorydev/subtext-cli) repo.
 - **Hooks** — a `SessionStart` hook injects the `using-subtext` router so the
   agent reaches for `proof` before editing UI code.
 
