@@ -1,11 +1,11 @@
 ---
-name: recipe-sightmap-setup
+name: subtext-recipe-sightmap-setup
 description: Short recipe to create sightmap definitions for a project from scratch.
 ---
 
 # Recipe: Sightmap Setup
 
-> **PREREQUISITE:** Read `sightmap` for the full schema reference.
+> **PREREQUISITE:** Read `subtext-sightmap` for the full schema reference.
 
 ## Steps
 
@@ -14,7 +14,7 @@ description: Short recipe to create sightmap definitions for a project from scra
 3. **Identify key UI components** in the snapshot (navigation, forms, cards, modals, etc.)
 4. **Find good selectors** using `live-view-inspect()` — this returns the full component tree with CSS selectors (tag, id, classes, `data-*` attributes, `aria-*`, `href`, etc.) on every node. Use it to identify stable targeting info, then switch back to `live-view-snapshot()` for normal interaction.
    Prefer `data-*` attributes when available — they're stable and semantically meaningful (e.g., `[data-component="ProductTile"]`, `[data-testid="checkout-button"]`).
-5. **Create `.sightmap/components.yaml`** with component definitions (see `sightmap` skill for schema)
+5. **Create `.sightmap/components.yaml`** with component definitions (see `subtext-sightmap` skill for schema)
 6. **Add memories** to key components — contextual notes that appear in a `[Guide]` section at the top of every snapshot. Focus on:
    - **Auth/access**: passwords, test accounts, login flows (e.g., `"Password is 'argus'"`)
    - **Stateful components**: how toggles, tabs, or modes change the UI (e.g., `"Audience toggle switches copy between builder/agent perspectives"`)

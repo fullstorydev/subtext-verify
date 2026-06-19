@@ -1,5 +1,5 @@
 ---
-name: shared
+name: subtext-shared
 description: Foundation skill for the Subtext Verify plugin. MCP tool conventions, sightmap upload, and security rules.
 ---
 
@@ -23,7 +23,7 @@ Two tools return a sightmap upload URL:
 If the project has `.sightmap/` definitions, upload them via the side-band script after getting the URL and **before** `live-view-new` (tunnel-first flow) or before interacting with the page:
 
 ```bash
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/shared/collect_and_upload_sightmap.py --url <sightmap_upload_url>
+python3 ${CLAUDE_PLUGIN_ROOT}/skills/subtext-shared/collect_and_upload_sightmap.py --url <sightmap_upload_url>
 ```
 
 The upload uses a single-use token embedded in the URL — no additional auth is needed. Do NOT pass the `sightmap` parameter directly to `live-connect`.
@@ -42,7 +42,7 @@ Tools within the subtext server are grouped by prefix:
 
 ## Discovering MCP Tool Parameters
 
-Each MCP tool is self-describing. If you're unsure about parameters, the tool's schema is available at call time. Don't memorize parameter lists — consult the atomic skill (`live`, `comments`, or `docs`) for which tools exist, then let the schema guide parameter usage.
+Each MCP tool is self-describing. If you're unsure about parameters, the tool's schema is available at call time. Don't memorize parameter lists — consult the atomic skill (`subtext-live`, `subtext-comments`, or `subtext-docs`) for which tools exist, then let the schema guide parameter usage.
 
 ## Security Rules
 

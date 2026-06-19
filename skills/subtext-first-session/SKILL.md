@@ -1,11 +1,11 @@
 ---
-name: first-session
+name: subtext-first-session
 description: Agent explores the user's site via hosted broswer (live), leaving comments as it goes. Accepts a user-described flow or explores organically. Capped at ~10 interactions across 2-3 pages. Returns session URL, trace URL, and metrics.
 ---
 
 # First Session
 
-> **PREREQUISITE — Read inline before any other action:** Read skills `shared`, `live`, `tunnel`, `comments`.
+> **PREREQUISITE — Read inline before any other action:** Read skills `subtext-shared`, `subtext-live`, `subtext-tunnel`, `subtext-comments`.
 
 Explore the user's site via hosted browser tools, leaving comments as a breadcrumb trail of agent reasoning.
 
@@ -17,7 +17,7 @@ If the user already has a session URL (they mention one or it was passed in), sk
 
 Before starting, confirm:
 1. **Dev server is running** — the user must have their app running locally (or provide a deployed URL)
-2. **Tunnel if localhost** — use the tunnel-first flow: `live-tunnel` → `tunnel-connect` → `live-view-new` (see `tunnel`). Do **not** use `live-connect` for localhost URLs.
+2. **Tunnel if localhost** — use the tunnel-first flow: `live-tunnel` → `tunnel-connect` → `live-view-new` (see `subtext-tunnel`). Do **not** use `live-connect` for localhost URLs.
 
 ## Input
 
@@ -54,7 +54,7 @@ Stop after **~10 interactions** (clicks, fills, navigations) across **2-3 pages*
 
 ## Comments
 
-Use `comment-add` (from `comments`) to leave observations throughout exploration. Comments attach to the session and appear in the viewer sidebar.
+Use `comment-add` (from `subtext-comments`) to leave observations throughout exploration. Comments attach to the session and appear in the viewer sidebar.
 
 ### Comment guidelines
 

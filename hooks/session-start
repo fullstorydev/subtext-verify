@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SessionStart hook for the subtext plugin.
-# Reads using-subtext SKILL.md and emits a platform-correct JSON envelope.
+# Reads subtext-using-subtext SKILL.md and emits a platform-correct JSON envelope.
 #
 # Adapted from superpowers (https://github.com/obra/superpowers/blob/main/hooks/session-start)
 # Copyright (c) 2025 Jesse Vincent. Licensed under MIT. See NOTICE.md.
@@ -10,7 +10,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
-skill_content=$(cat "${PLUGIN_ROOT}/skills/using-subtext/SKILL.md" 2>&1 || echo "Error reading using-subtext skill")
+skill_content=$(cat "${PLUGIN_ROOT}/skills/subtext-using-subtext/SKILL.md" 2>&1 || echo "Error reading subtext-using-subtext skill")
 
 # Fast JSON-escape via parameter substitution (5 single-pass replacements).
 escape_for_json() {

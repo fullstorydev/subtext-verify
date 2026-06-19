@@ -1,11 +1,11 @@
 ---
-name: docs
+name: subtext-docs
 description: Proof document MCP tools for creating, updating, and closing agent work documentation. Use when tracking a bug fix, UX review, or changeset to produce a permanent, evidence-backed record.
 ---
 
 # Docs
 
-> **PREREQUISITE:** Read `shared` for MCP conventions.
+> **PREREQUISITE:** Read `subtext-shared` for MCP conventions.
 
 Tool catalog and judgment rules for agent-produced proof documents. Doc tools are available on the subtext MCP server.
 
@@ -149,7 +149,7 @@ GCS-backed attachments (`base64_data`, `text`, `artifact_id`) are stored as `gs:
 
 Create a doc at the **start** of any significant workflow:
 
-- Running the `proof` skill for a code change (create at Step 1, close at Step 7)
+- Running the `subtext-proof` skill for a code change (create at Step 1, close at Step 7)
 - Starting a multi-step changeset (PR review, deployment verification)
 - Any time the user will want a permanent record of what the agent did and why
 
@@ -239,6 +239,6 @@ User receives: "Fix complete. Proof document: https://..."
 
 ## See Also
 
-- `shared` — MCP conventions
-- `comments` — inline session annotations (separate from proof docs)
-- `proof` — workflow skill that integrates doc evidence capture with visual verification
+- `subtext-shared` — MCP conventions
+- `subtext-comments` — inline session annotations (separate from proof docs)
+- `subtext-proof` — workflow skill that integrates doc evidence capture with visual verification
