@@ -1,11 +1,11 @@
 ---
-name: proof
+name: subtext-proof
 description: You MUST use this skill when implementing, fixing, or refactoring code. Captures evidence artifacts (screenshots, network traces, code diffs, trace session links) into a proof document as you work.
 ---
 
 # Proof
 
-> **PREREQUISITE — Read inline before any other action:** Read skills `shared`, `live`, `comments`, `docs`.
+> **PREREQUISITE — Read inline before any other action:** Read skills `subtext-shared`, `subtext-live`, `subtext-comments`, `subtext-docs`.
 
 **Type:** Rigid workflow — follow exactly. Skipping steps means unverified work ships.
 
@@ -39,7 +39,7 @@ comment-add({ ..., screenshot_url, intent: "looks-good", text: "AFTER: ..." })
 
 Every proof run creates a permanent record alongside the live session. This lets you — and any future reviewer — reconstruct exactly what changed, what it looked like before and after, and what evidence backed the decision to ship.
 
-**Create once, attach continuously, close at the end.** Pass the `verification` seed template (see `docs`) unless you have a better fit:
+**Create once, attach continuously, close at the end.** Pass the `verification` seed template (see `subtext-docs`) unless you have a better fit:
 
 
 ```
@@ -54,7 +54,7 @@ The `doc_id` travels through every step below. The `doc_url` is the permanent li
 
 ### Step 1: Connect to the running app
 
-Open a browser connection per `live`'s connect flow — `live-connect` for remote URLs, tunnel-first (`live-tunnel` → `tunnel-connect` → `live-view-new`) for localhost. The hosted browser cannot reach localhost without the tunnel; see `live` for both flows in detail.
+Open a browser connection per `subtext-live`'s connect flow — `live-connect` for remote URLs, tunnel-first (`live-tunnel` → `tunnel-connect` → `live-view-new`) for localhost. The hosted browser cannot reach localhost without the tunnel; see `subtext-live` for both flows in detail.
 
 If the app isn't running, **try to start the dev server yourself first.** Look for `package.json` scripts (`dev`, `start`, `serve`), a `Makefile`, or a `docker-compose.yml`. Run the appropriate command in the background. Only ask the user if you can't figure out how to start it.
 
@@ -75,7 +75,7 @@ Do NOT bury the link in a wall of text. It goes first, on its own line.
 
 ### Polling discipline (Steps 3–6)
 
-While the trace is open, the human reviewer can leave comments or take browser control at any time. Between any two `live-*` calls in the loop below, call `live-signal` with the cursor saved from the previous call (omit `since` on the first call to baseline). New comments come back inline — read each, reply via `comment-reply` if it directs the work, and save the new `cursor`. The `operator` field on every response is the source of truth for control state. See `live` for the full response shape and operator-gate behavior.
+While the trace is open, the human reviewer can leave comments or take browser control at any time. Between any two `live-*` calls in the loop below, call `live-signal` with the cursor saved from the previous call (omit `since` on the first call to baseline). New comments come back inline — read each, reply via `comment-reply` if it directs the work, and save the new `cursor`. The `operator` field on every response is the source of truth for control state. See `subtext-live` for the full response shape and operator-gate behavior.
 
 ### Step 3: Navigate to the affected area and capture BEFORE
 
@@ -238,7 +238,7 @@ If the change affects more than one page or state:
 
 ## Composition
 
-- **Requires:** `live` (browser tools, returns `trace_url`), `comments` (annotations), `docs` (proof document)
+- **Requires:** `subtext-live` (browser tools, returns `trace_url`), `subtext-comments` (annotations), `subtext-docs` (proof document)
 - **Hands off to:** the separate **Subtext Review** plugin — when the session is complete, another agent (or the same agent later) can review the recorded session as a secondary verification pass
 - **Triggers from:** any file edit to UI code, or when the user asks for a visual change
 

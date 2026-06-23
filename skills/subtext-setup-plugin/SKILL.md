@@ -1,5 +1,5 @@
 ---
-name: setup-plugin
+name: subtext-setup-plugin
 description: Install the Subtext Verify plugin and configure MCP servers. Authenticates via OAuth or API Key.
 ---
 
@@ -68,8 +68,8 @@ Re-run the connectivity check after authenticating.
 
 After setup, explain what was installed:
 
-- **Skills** — `proof` (before/after evidence for UI changes), `onboard` (first-run walkthrough), `first-session` (agent-driven exploration), plus the underlying tool catalogs (`live`, `comments`, `docs`, `tunnel`, `sightmap`).
+- **Skills** — `subtext-proof` (before/after evidence for UI changes), `subtext-onboard` (first-run walkthrough), `subtext-first-session` (agent-driven exploration), plus the underlying tool catalogs (`subtext-live`, `subtext-comments`, `subtext-docs`, `subtext-tunnel`, `subtext-sightmap`).
 - **MCP servers** — `subtext` (live, comments, docs, artifacts, clips) and `subtext-tunnel` (local reverse-tunnel client for localhost dev servers).
-- **Sightmap** — semantic component mapping, uploaded automatically after each connection. See `sightmap`.
+- **Sightmap** — semantic component mapping, uploaded automatically after each connection. See `subtext-sightmap`.
 
 > Read-only review of completed sessions and privacy-rule management live in the separate **Subtext Review** plugin.

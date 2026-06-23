@@ -6,10 +6,10 @@ running app — for coding agents.
 
 This plugin bundles:
 
-- **Skills** — `proof` (before/after visual evidence, the inner loop), `onboard`
-  and `first-session` (first-run flows), plus the tool catalogs `live`,
-  `comments`, `docs`, `tunnel`, `sightmap`, the `recipe-sightmap-setup` recipe,
-  and `shared` / `using-subtext` / `setup-plugin`.
+- **Skills** — `subtext-proof` (before/after visual evidence, the inner loop), `subtext-onboard`
+  and `subtext-first-session` (first-run flows), plus the tool catalogs `subtext-live`,
+  `subtext-comments`, `subtext-docs`, `subtext-tunnel`, `subtext-sightmap`, the `subtext-recipe-sightmap-setup` recipe,
+  and `subtext-shared` / `subtext-using-subtext` / `subtext-setup-plugin`.
 - **MCP servers**
   - `subtext` (HTTP) — `https://api.fullstory.com/mcp/subtext` (EU1 mirror:
     `https://api.eu1.fullstory.com/mcp/subtext`). Serves the `live-*`,
@@ -17,8 +17,8 @@ This plugin bundles:
   - `subtext-tunnel` (stdio) — the local reverse-tunnel client, run via
     `npx -y @subtextdev/subtext-cli@latest tunnel mcp`, published from the
     [`fullstorydev/subtext-cli`](https://github.com/fullstorydev/subtext-cli) repo.
-- **Hooks** — a `SessionStart` hook injects the `using-subtext` router so the
-  agent reaches for `proof` before editing UI code.
+- **Hooks** — a `SessionStart` hook injects the `subtext-using-subtext` router so the
+  agent reaches for `subtext-proof` before editing UI code.
 
 ## Install
 

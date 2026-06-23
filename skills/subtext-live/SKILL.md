@@ -1,11 +1,11 @@
 ---
-name: live
+name: subtext-live
 description: Live browser MCP tools for driving a hosted browser — connections, views, interactions, console, network, and tunnel. Use when reproducing flows, taking screenshots, or interacting with a running app.
 ---
 
 # Live Browser
 
-> **PREREQUISITE:** Read `shared` for MCP conventions and sightmap upload.
+> **PREREQUISITE:** Read `subtext-shared` for MCP conventions and sightmap upload.
 > **ENVIRONMENT:** If a `subtext-environment` skill is available in the host project, read it before connecting — it specifies which MCP server prefix to use for live tools.
 
 API catalog for live browser tools (all prefixed `live-`) on the unified subtext MCP server. These tools let you open browser connections, navigate views, interact with elements, and inspect console/network activity.
@@ -155,9 +155,9 @@ When the hosted browser needs to reach `localhost` or local dev URLs, use the tu
 2. Call `tunnel-connect` on the **subtext-tunnel** MCP server with `relayUrl` and `allowedOrigins` (one or more local origins the tunnel may serve)
 3. Call `live-view-new` with the `connection_id` and localhost URL
 
-Do **not** use `live-connect` for localhost URLs — it mints its own connection ID and can't bind to the tunnel. See `tunnel` for full details, including the trunk pattern (`host:port` covers all subdomains on the same port) needed when local apps redirect across subdomains (e.g. OAuth flows).
+Do **not** use `live-connect` for localhost URLs — it mints its own connection ID and can't bind to the tunnel. See `subtext-tunnel` for full details, including the trunk pattern (`host:port` covers all subdomains on the same port) needed when local apps redirect across subdomains (e.g. OAuth flows).
 
 ## See Also
 
-- `shared` — MCP conventions and sightmap upload
-- `tunnel` — Reverse tunnel setup for localhost access
+- `subtext-shared` — MCP conventions and sightmap upload
+- `subtext-tunnel` — Reverse tunnel setup for localhost access

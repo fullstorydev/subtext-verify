@@ -1,5 +1,5 @@
 ---
-name: tunnel
+name: subtext-tunnel
 description: Use when opening a hosted browser connection against a localhost or local dev server URL. Sets up a reverse tunnel so the hosted browser can reach the user's local server.
 ---
 
@@ -53,7 +53,7 @@ Default deny: omit something and chromium can't reach it through this tunnel.
 Set up the tunnel before opening a view. `live-tunnel` allocates the browser connection and returns a `connectionId` — use it with `live-view-new` to navigate.
 
 1. Call `live-tunnel` on the **subtext** MCP server → returns `relayUrl`, `connectionId`, and `sightmapUploadUrl`
-2. If the project has `.sightmap/` definitions, upload them now (see `shared`). Upload before `live-view-new` so the sightmap is active for the first snapshot.
+2. If the project has `.sightmap/` definitions, upload them now (see `subtext-shared`). Upload before `live-view-new` so the sightmap is active for the first snapshot.
 3. Call `tunnel-connect` on the **subtext-tunnel** MCP server with `relayUrl` and `allowedOrigins`
 4. Verify `state` is `"ready"` in the response
 5. Call `live-view-new` on **subtext** with the `connection_id` from step 1 and the full localhost URL

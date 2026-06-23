@@ -1,11 +1,11 @@
 ---
-name: onboard
+name: subtext-onboard
 description: Interactive first-run onboarding for new Subtext users. Connects to the user's local dev server, proves a small change with before/after evidence in a watchable trace, then bootstraps a starter sightmap from what was learned.
 ---
 
 # Onboarding
 
-> **PREREQUISITE — Read inline before any other action:** Read skills `proof`, `sightmap`, `live`, `tunnel`, `shared`.
+> **PREREQUISITE — Read inline before any other action:** Read skills `subtext-proof`, `subtext-sightmap`, `subtext-live`, `subtext-tunnel`, `subtext-shared`.
 
 **Type:** User-facing workflow. Conversational. Three visible steps.
 
@@ -13,7 +13,7 @@ The goal: walk a new user through one real, useful Subtext run end-to-end. They 
 
 ## Implicit health check
 
-Do **not** announce a "plugin setup" step. Trust that the plugin is installed — the user just ran a slash command from it. If the first MCP call below fails (server unreachable, auth missing), invoke `setup-plugin`, then retry the call. Otherwise stay silent about plumbing.
+Do **not** announce a "plugin setup" step. Trust that the plugin is installed — the user just ran a slash command from it. If the first MCP call below fails (server unreachable, auth missing), invoke `subtext-setup-plugin`, then retry the call. Otherwise stay silent about plumbing.
 
 ## Greeting
 
@@ -47,15 +47,15 @@ Wait for the user's answer. Do **not** probe ports yourself. Do **not** read `pa
 
 If they paste a non-local URL, push back — explain the change won't be visible there — and ask again.
 
-Once you have a `http://localhost:…` (or `http://127.0.0.1:…`) URL, follow the **tunnel-first** flow from `tunnel`:
+Once you have a `http://localhost:…` (or `http://127.0.0.1:…`) URL, follow the **tunnel-first** flow from `subtext-tunnel`:
 
 1. `live-tunnel()` → `connectionId`, `relayUrl`
 2. `tunnel-connect({ relayUrl, allowedOrigins: [<base of the localhost URL>] })` → confirm `state: "ready"`
 3. `live-view-new({ connection_id, url: <full localhost URL> })` → returns `trace_url` (and the initial snapshot)
 
-For onboarding the user only navigates to the URL they gave us, so a single-entry allowlist is correct. If their app turns out to redirect across subdomains (OAuth, multi-host dev), `tunnel` covers the trunk pattern that implicitly matches every subdomain.
+For onboarding the user only navigates to the URL they gave us, so a single-entry allowlist is correct. If their app turns out to redirect across subdomains (OAuth, multi-host dev), `subtext-tunnel` covers the trunk pattern that implicitly matches every subdomain.
 
-If any of these calls fails because the MCP server is unreachable, invoke `setup-plugin`, then retry.
+If any of these calls fails because the MCP server is unreachable, invoke `subtext-setup-plugin`, then retry.
 
 **Print the `trace_url` immediately, on its own line, before saying anything else:**
 
@@ -89,7 +89,7 @@ Ask for a small visible change. Give concrete examples so the user doesn't have 
 >
 > Keep it small — anything you can eyeball."
 
-Once the user describes the change, follow the **`proof`** workflow you already read inline. Important:
+Once the user describes the change, follow the **`subtext-proof`** workflow you already read inline. Important:
 
 - The connection from Step 1 is reusable. Skip proof's Step 1 (connect) and Step 2 (share trace URL — already done). Start at proof's Step 3 (BEFORE capture).
 - Use the existing `connection_id` and `view_id` from Step 1 in `live-view-screenshot` and `comment-add` calls.
@@ -122,10 +122,10 @@ Print:
 
 > "Now I'll capture what I just learned about your app in a small `.sightmap/` file. This is the artifact that makes the *next* run faster — the next coding agent (Claude, Cursor, Codex, anything that reads repo files) reads this YAML and already knows what these components are without exploring. They get committed to your repo so the head start travels with the code."
 
-Then create or extend `.sightmap/components.yaml` using the `sightmap` schema. Include:
+Then create or extend `.sightmap/components.yaml` using the `subtext-sightmap` schema. Include:
 
 - **Component definitions** for elements you actually touched during the proof run. Use stable selectors — prefer `data-*` attributes when present.
-- **Memory entries** about runtime behavior you observed — state changes, validation, gating, anything not obvious from the rendered DOM. Skip code-structure tips, file paths, JSX/CSS patterns, and external doc references; those don't belong in the sightmap. See `sightmap` for the full rule.
+- **Memory entries** about runtime behavior you observed — state changes, validation, gating, anything not obvious from the rendered DOM. Skip code-structure tips, file paths, JSX/CSS patterns, and external doc references; those don't belong in the sightmap. See `subtext-sightmap` for the full rule.
 
 Stay honest about scope: only describe what you actually touched. Don't pad the file with components you didn't interact with — those are best added when an agent works with them later, not speculatively now.
 
@@ -146,4 +146,4 @@ Recap and point to next steps:
 > From here:
 > - **`/proof`** — use this any time you make a UI change. Same before/after evidence loop, no onboarding wrapper.
 > - **`/review`** — paste any session URL to get a structured summary, with optional reproduction steps on request.
-> - **Learn more about sightmap** — read `skills/sightmap/SKILL.md` to teach agents about more of your app's surface (views, requests, scoped components, memory entries)."
+> - **Learn more about sightmap** — read `skills/subtext-sightmap/SKILL.md` to teach agents about more of your app's surface (views, requests, scoped components, memory entries)."
