@@ -1,13 +1,46 @@
 {
   "name": "subtext-verify",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Drive a hosted browser, capture before/after proof, and leave reviewer-facing evidence against your running app",
   "author": {
     "name": "Subtext",
     "email": "subtext@fullstory.com",
     "url": "https://subtext.fullstory.com"
   },
+  "homepage": "https://subtext.fullstory.com",
+  "repository": "https://github.com/fullstorydev/subtext-verify",
   "license": "MIT",
+  "keywords": [
+    "subtext",
+    "verification",
+    "testing",
+    "proof",
+    "browser-automation"
+  ],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json"
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Subtext Verify",
+    "shortDescription": "Before/after proof for UI changes",
+    "longDescription": "Drive a hosted browser against your running app, capture before/after screenshots, network traces, and code diffs, and leave reviewer-facing evidence — recorded as a watchable Subtext session.",
+    "developerName": "Subtext",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Prove this UI change works with before/after screenshots.",
+      "Drive my running app and capture a trace of the checkout flow."
+    ],
+    "websiteURL": "https://subtext.fullstory.com",
+    "privacyPolicyURL": "https://www.fullstory.com/legal/privacy-policy/",
+    "termsOfServiceURL": "https://www.fullstory.com/legal/terms-and-conditions/",
+    "brandColor": "#F5447B",
+    "composerIcon": "./assets/openai-composer-dark.png",
+    "logo": "./assets/openai-directory-light.png",
+    "logoDark": "./assets/openai-directory-dark.png",
+    "screenshots": []
+  }
 }

@@ -1,11 +1,23 @@
 {
   "name": "subtext-verify",
+  "displayName": "Subtext Verify",
   "description": "Drive a hosted browser, capture before/after proof, and leave reviewer-facing evidence against your running app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "author": {
     "name": "Subtext",
     "email": "subtext@fullstory.com"
   },
+  "homepage": "https://subtext.fullstory.com",
+  "repository": "https://github.com/fullstorydev/subtext-verify",
+  "category": "Developer Tools",
+  "logo": "https://subtext.fullstory.com/brand/avatar/subtext-avatar-tile-color-on-light-512.png",
+  "keywords": [
+    "subtext",
+    "verification",
+    "testing",
+    "proof",
+    "browser-automation"
+  ],
   "hooks": "./hooks/hooks-cursor.json"
 }
