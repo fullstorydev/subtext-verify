@@ -1,17 +1,22 @@
 ---
-name: subtext-using-subtext
+name: subtext-verify-using
 description: Use when starting any conversation that may involve rendered UI, driving a running app, or producing reviewer-facing evidence (screenshots, viewer links, code diffs). Establishes how the Subtext Verify skills compose and when to invoke them before any response or action.
 ---
 
 <EXTREMELY-IMPORTANT>
 If the task touches rendered UI, a running app, or producing
-proof-of-work evidence, you MUST invoke the relevant Subtext skill
-before responding.
+proof-of-work evidence, you MUST invoke the relevant Subtext Verify
+skill before responding.
 </EXTREMELY-IMPORTANT>
+
+Subtext Verify is a **companion** to Subtext — it assumes Subtext is already
+installed (its `subtext` MCP server, shared conventions, and `sightmap-authoring`
+skill). This router covers the Verify surface: driving a live browser and
+capturing proof.
 
 ## Where this skill applies
 
-Subtext runs *where the work happens*. Unlike many process skills,
+Subtext Verify runs *where the work happens*. Unlike many process skills,
 this includes subagent contexts.
 
 - **Subagent doing UI/UX work or producing reviewer-facing evidence:**
@@ -28,21 +33,22 @@ this includes subagent contexts.
 - **Codex:** Skills load natively from `~/.agents/skills/`. Read the relevant SKILL.md directly when its description matches your task.
 - **Gemini CLI:** Skills activate via the `activate_skill` tool.
 
-## When to Reach for Subtext
+## When to Reach for Subtext Verify
 
 | Signal | Reach for |
 |--------|-----------|
 | Making UI/visual changes | `subtext-proof` |
 | Need to drive a hosted browser | `subtext-live` |
 | Connecting to a localhost dev server | `subtext-tunnel` |
-| Setting up a new project | `subtext-onboard` |
-| Naming components / runtime model | `subtext-sightmap` |
+| First run / walking a new user through Verify | `subtext-onboard` |
+| Naming components / runtime model | `sightmap-authoring` (from Subtext) |
 
-> Reviewing a *completed* session from a URL (read-only summary, privacy rules) is the separate **Subtext Review** plugin's job, not this one.
+> Reviewing a *completed* session from a URL (read-only summary, privacy rules)
+> is **Subtext**'s job, not Verify's.
 
 ## The Rule
 
-Invoke the relevant Subtext skill BEFORE any response or action that
+Invoke the relevant Subtext Verify skill BEFORE any response or action that
 touches the trigger surface. Even a 1% chance counts.
 
 ## Red Flags
@@ -61,13 +67,13 @@ These thoughts mean STOP — you're rationalizing:
 
 ## Composition
 
-- **Atomics** (`subtext-shared`, `subtext-live`, `subtext-sightmap`, `subtext-tunnel`, `subtext-comments`, `subtext-docs`) — tool catalogs.
+- **Atomics** (`subtext-verify-shared`, `subtext-live`, `subtext-tunnel`, `subtext-comments`, `subtext-docs`) — tool catalogs.
 - **Workflows** (`subtext-proof`) — orchestration. `subtext-proof` is the inner loop, captured as a recorded session.
 - **Recipes** (`subtext-recipe-sightmap-setup`) — short step lists.
-- **Onboarding** (`subtext-onboard`, `subtext-setup-plugin`, `subtext-first-session`) — first-time user setup.
+- **Onboarding** (`subtext-onboard`, `subtext-first-session`) — first-run flows.
 
 ```
-proof ──▶ session recorded ──▶ (optional) review in the Subtext Review plugin
+proof ──▶ session recorded ──▶ (optional) review in Subtext
 ```
 
 ## Skill Types

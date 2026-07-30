@@ -5,7 +5,7 @@ description: You MUST use this skill when implementing, fixing, or refactoring c
 
 # Proof
 
-> **PREREQUISITE — Read inline before any other action:** Read skills `subtext-shared`, `subtext-live`, `subtext-comments`, `subtext-docs`.
+> **PREREQUISITE — Read inline before any other action:** Read skills `subtext-verify-shared`, `subtext-live`, `subtext-comments`, `subtext-docs`.
 
 **Type:** Rigid workflow — follow exactly. Skipping steps means unverified work ships.
 
@@ -64,7 +64,7 @@ Call `doc-create` with the `verification` seed template (or `bug-fix` / `changes
 
 ### Step 2: Share the trace URL
 
-**Immediately** print the `trace_url` from the connect step on its own line. (`live-connect` returns it for remote; `live-view-new` returns it for tunnel-first.) This lets the user watch the agent's browser in real time and gives downstream reviewers (including follow-up review in the separate **Subtext Review** plugin) a stable entry point to the recorded session.
+**Immediately** print the `trace_url` from the connect step on its own line. (`live-connect` returns it for remote; `live-view-new` returns it for tunnel-first.) This lets the user watch the agent's browser in real time and gives downstream reviewers (including follow-up review in **Subtext** itself) a stable entry point to the recorded session.
 
 ```
 Trace: {trace_url}
@@ -239,7 +239,7 @@ If the change affects more than one page or state:
 ## Composition
 
 - **Requires:** `subtext-live` (browser tools, returns `trace_url`), `subtext-comments` (annotations), `subtext-docs` (proof document)
-- **Hands off to:** the separate **Subtext Review** plugin — when the session is complete, another agent (or the same agent later) can review the recorded session as a secondary verification pass
+- **Hands off to:** **Subtext** review — when the session is complete, another agent (or the same agent later) can review the recorded session as a secondary verification pass
 - **Triggers from:** any file edit to UI code, or when the user asks for a visual change
 
 ## Async heartbeat (Claude Code only, MANDATORY)

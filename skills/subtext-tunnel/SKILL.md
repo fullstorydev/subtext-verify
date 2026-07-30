@@ -17,6 +17,18 @@ When the hosted browser needs to load a page from the user's local dev server (e
 | `tunnel-connect` | subtext-tunnel | Connect local server(s) to relay |
 | `tunnel-status` | subtext-tunnel | Check tunnel connection state |
 
+## Setup check
+
+The `subtext-tunnel` stdio server is the one server the base Subtext install does
+**not** configure — Verify wires it in `mcp.json` (`npx -y @subtextdev/subtext-cli@latest tunnel mcp`).
+If `tunnel-connect` / `tunnel-status` aren't available, that server isn't
+configured; add it to your MCP config (see the repo `mcp.json`) and retry. The
+`live-*` tools come from the shared `subtext` server, which base Subtext already
+configures.
+
+If you also upload a `.sightmap/` corpus, the collector needs **Python 3.9+ and
+PyYAML** (`pip install pyyaml`) — see `subtext-verify-shared`.
+
 ## When to Use
 
 - `live-connect` is called with a `localhost`, `127.0.0.1`, or other local URL
@@ -53,7 +65,7 @@ Default deny: omit something and chromium can't reach it through this tunnel.
 Set up the tunnel before opening a view. `live-tunnel` allocates the browser connection and returns a `connectionId` — use it with `live-view-new` to navigate.
 
 1. Call `live-tunnel` on the **subtext** MCP server → returns `relayUrl`, `connectionId`, and `sightmapUploadUrl`
-2. If the project has `.sightmap/` definitions, upload them now (see `subtext-shared`). Upload before `live-view-new` so the sightmap is active for the first snapshot.
+2. If the project has `.sightmap/` definitions, upload them now (see `subtext-verify-shared`). Upload before `live-view-new` so the sightmap is active for the first snapshot.
 3. Call `tunnel-connect` on the **subtext-tunnel** MCP server with `relayUrl` and `allowedOrigins`
 4. Verify `state` is `"ready"` in the response
 5. Call `live-view-new` on **subtext** with the `connection_id` from step 1 and the full localhost URL

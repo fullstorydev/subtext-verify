@@ -5,7 +5,7 @@ description: Agent explores the user's site via hosted broswer (live), leaving c
 
 # First Session
 
-> **PREREQUISITE — Read inline before any other action:** Read skills `subtext-shared`, `subtext-live`, `subtext-tunnel`, `subtext-comments`.
+> **PREREQUISITE — Read inline before any other action:** Read skills `subtext-verify-shared`, `subtext-live`, `subtext-tunnel`, `subtext-comments`.
 
 Explore the user's site via hosted browser tools, leaving comments as a breadcrumb trail of agent reasoning.
 
