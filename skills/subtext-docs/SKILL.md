@@ -5,7 +5,7 @@ description: Proof document MCP tools for creating, updating, and closing agent 
 
 # Docs
 
-> **PREREQUISITE:** Read `subtext-shared` for MCP conventions.
+> **PREREQUISITE:** Read `subtext-verify-shared` for MCP conventions.
 
 Tool catalog and judgment rules for agent-produced proof documents. Doc tools are available on the subtext MCP server.
 
@@ -239,6 +239,6 @@ User receives: "Fix complete. Proof document: https://..."
 
 ## See Also
 
-- `subtext-shared` — MCP conventions
+- `subtext-verify-shared` — MCP conventions
 - `subtext-comments` — inline session annotations (separate from proof docs)
 - `subtext-proof` — workflow skill that integrates doc evidence capture with visual verification

@@ -5,7 +5,7 @@ description: Live browser MCP tools for driving a hosted browser — connections
 
 # Live Browser
 
-> **PREREQUISITE:** Read `subtext-shared` for MCP conventions and sightmap upload.
+> **PREREQUISITE:** Read `subtext-verify-shared` for MCP conventions and sightmap upload.
 > **ENVIRONMENT:** If a `subtext-environment` skill is available in the host project, read it before connecting — it specifies which MCP server prefix to use for live tools.
 
 API catalog for live browser tools (all prefixed `live-`) on the unified subtext MCP server. These tools let you open browser connections, navigate views, interact with elements, and inspect console/network activity.
@@ -57,6 +57,12 @@ API catalog for live browser tools (all prefixed `live-`) on the unified subtext
 | `live-log-get` | Get details of a specific console message |
 | `live-net-list` | List network requests |
 | `live-net-get` | Get details of a specific network request |
+
+When the project's `.sightmap/` corpus defines `requests:` and it's been uploaded
+(see `subtext-verify-shared`), matched requests show their semantic name in
+`live-net-list`, and `live-net-get` adds a Sightmap section with the request's
+description and field schema. Unmatched requests render normally. See
+`sightmap-authoring` for the request schema.
 
 ### Signals
 
@@ -159,5 +165,5 @@ Do **not** use `live-connect` for localhost URLs — it mints its own connection
 
 ## See Also
 
-- `subtext-shared` — MCP conventions and sightmap upload
+- `subtext-verify-shared` — MCP conventions and sightmap upload
 - `subtext-tunnel` — Reverse tunnel setup for localhost access

@@ -5,7 +5,7 @@ description: Comment MCP tools for agent-user collaboration. Use when reviewing 
 
 # Comments
 
-> **PREREQUISITE:** Read `subtext-shared` for MCP conventions and sightmap upload.
+> **PREREQUISITE:** Read `subtext-verify-shared` for MCP conventions and sightmap upload.
 
 Tool catalog and judgment rules for comment-based agent-user collaboration. Comment tools are available on the subtext MCP server.
 
@@ -94,5 +94,5 @@ Comments enable asynchronous review between agents and users:
 
 ## See Also
 
-- `subtext-shared` — MCP conventions and sightmap upload
-- Reviewing a *completed* session (the `review-*` tools) lives in the separate **Subtext Review** plugin.
+- `subtext-verify-shared` — MCP conventions and sightmap upload
+- Reviewing a *completed* session (the `review-*` tools) lives in **Subtext** itself.
