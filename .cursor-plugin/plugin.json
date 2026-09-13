@@ -2,7 +2,7 @@
   "name": "subtext-verify",
   "displayName": "Subtext Verify",
   "description": "Drive a hosted browser, capture before/after proof, and leave reviewer-facing evidence against your running app",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "author": {
     "name": "Subtext",
