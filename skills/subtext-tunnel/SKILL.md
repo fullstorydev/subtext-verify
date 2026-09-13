@@ -26,8 +26,8 @@ configured; add it to your MCP config (see the repo `mcp.json`) and retry. The
 `live-*` tools come from the shared `subtext` server, which base Subtext already
 configures.
 
-If you also upload a `.sightmap/` corpus, the collector needs **Python 3.9+ and
-PyYAML** (`pip install pyyaml`) — see `subtext-verify-shared`.
+If you also upload a `.sightmap/` corpus, you need the `sightmap` binary on PATH
+(`npm install -g @sightmap/sightmap`) — see `subtext-verify-shared`.
 
 ## When to Use
 

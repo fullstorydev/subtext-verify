@@ -38,20 +38,23 @@ Two live tools return a single-use sightmap upload URL:
 | `live-connect` | `sightmap_upload_url` | text line in response |
 | `live-tunnel` | `sightmapUploadUrl` | JSON field in response |
 
-If the project has `.sightmap/` definitions, upload them with the bundled
-collector after getting the URL and **before** `live-view-new` (tunnel-first
-flow) or before interacting with the page:
+If the project has `.sightmap/` definitions, upload them with the `sightmap` CLI
+after getting the URL and **before** `live-view-new` (tunnel-first flow) or before
+interacting with the page:
 
 ```bash
 # run from the project root (where .sightmap/ lives):
-python3 <this skill's directory>/collect_and_upload_sightmap.py --url <sightmap_upload_url>
+sightmap export --url <sightmap_upload_url>
 ```
 
-`collect_and_upload_sightmap.py` sits **beside this SKILL.md** — reference it at
-that path. It walks `.sightmap/**/*.yaml`, flattens hierarchical components into
-compound selectors, collects top-level `memory`, and POSTs using the single-use
-token in the URL (no extra auth). Requires **Python 3.9+ and PyYAML**
-(`pip install pyyaml`). Do NOT also pass a `sightmap` parameter to `live-connect`.
+`sightmap export` finds the nearest `.sightmap/` at or above the current directory,
+compiles it through the Go loader (the single source of truth, shared with the
+server-side reader) and POSTs the whole canonical wire — components (incl.
+view-scoped), views/routes, requests, messages, memory, and tags — using the
+single-use token in the URL (no extra auth). Needs the `sightmap` binary on PATH
+(`npm install -g @sightmap/sightmap`; see the `sightmap-authoring` skill from
+Subtext). The token is also time-limited, so upload promptly. Do NOT also pass a
+`sightmap` parameter to `live-connect`.
 
 For the `.sightmap/` schema and how to author a corpus, see the `sightmap-authoring`
 skill from Subtext.
