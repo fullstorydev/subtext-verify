@@ -42,9 +42,14 @@ verify tools*.
 
 **Claude Code**
 ```
-/plugin marketplace add fullstorydev/subtext-verify
+/plugin marketplace add fullstorydev/subtext
 /plugin install subtext-verify@subtext-marketplace
+/plugin enable subtext-verify@subtext-marketplace
 ```
+
+Verify is distributed through the Subtext marketplace, so users who already
+installed Subtext only need the last two lines. Verify is listed as disabled by
+default, so it must be enabled after install.
 
 **Cursor** — install from the Marketplace panel (or a Team Marketplace that
 imports this repo).
